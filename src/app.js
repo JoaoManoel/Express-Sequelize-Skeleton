@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 
 const API_URL = require('./config.js').api.url;
 
+/* ##### MIDDLEWARES ##### */
 app.use(helmet());
 app.use(cors());
 app.use(bodyParser.json());
@@ -17,6 +18,7 @@ app.get('/ping', (req, res, next) => {
   res.json({msg: 'pong'})
 });
 
+/* ##### ERROR MIDDLEWARE ##### */
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
     //JWT
